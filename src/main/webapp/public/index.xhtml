@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/public/template_initial.xhtml">
+	<ui:define name="nav_bar">
+		<ui:include src="top_bar.xhtml" />
+		<ui:include src="search_bar.xhtml" />
+	</ui:define>
+
+	<ui:define name="container">
+		<div class="row">
+
+			<h:form id="form">
+	   			<p:growl id="msgs" showDetail="true"/>
+					<p:dataTable id="projects" var="project" value="#{projectController.projects}"
+						editable="true" style="margin-bottom:20px">
+						<f:facet name="header">
+				           Projetos
+				       </f:facet>
+		
+						<p:ajax event="rowEdit" listener="#{projectController.onRowEdit}"
+							update=":form:msgs" />
+						<p:ajax event="rowEditCancel" listener="#{projectController.onRowCancel}"
+							update=":form:msgs" />
+		
+						<p:column headerText="Id">
+							<p:cellEditor>
+								<f:facet name="output">
+									<h:outputText value="#{project.id}" />
+								</f:facet>
+								<f:facet name="input">
+									<p:inputText id="modelInput" value="#{project.id}" style="width:100%" />
+								</f:facet>
+							</p:cellEditor>
+						</p:column>
+						
+						<p:column headerText="Nome">
+							<p:cellEditor>
+								<f:facet name="output">
+									<h:outputText value="#{project.name}" />
+								</f:facet>
+								<f:facet name="input">
+									<p:inputText value="#{project.name}" label="Nome" style="width:100%" />
+								</f:facet>
+							</p:cellEditor>
+						</p:column>
+						
+						<p:column headerText="Descrição">
+							<p:cellEditor>
+								<f:facet name="output">
+									<h:outputText value="#{project.description}" />
+								</f:facet>
+								<f:facet name="input">
+									<p:inputText value="#{project.description}" label="Descrição" style="width:100%" />
+								</f:facet>
+							</p:cellEditor>
+						</p:column>
+						
+						<p:column headerText="Diretório">
+							<p:cellEditor>
+								<f:facet name="output">
+									<h:outputText value="#{project.directory}" />
+								</f:facet>
+								<f:facet name="input">
+									<p:inputText value="#{project.directory}" label="Diretório" style="width:100%" />
+								</f:facet>
+							</p:cellEditor>
+						</p:column>
+					
+						<p:column style="width:32px">
+							<p:rowEditor/>
+						</p:column>
+					</p:dataTable>
+				</h:form>
+			</div>
+		</ui:define>
+		<ui:define name="title">        
+	        Bem-vindo ao Metrics Analyser
+	    </ui:define>
+	</ui:composition>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:body>
+	<ui:composition template="template_initial.xhtml">
+		<ui:define name="nav_bar">
+			<ui:include src="top_bar_admin.xhtml" />
+		</ui:define>
+		<ui:define name="container">
+			<div class="row">
+				<div class="container" style="padding-top: 50px;">
+					<h:panelGrid columns="2">
+						<p:pieChart id="sample" value="#{chartBean.pieModel}" 
+							legendPosition="w" title="Usuários"
+							style="width:450px;height:350px" />
+						
+						<p:pieChart id="custom" value="#{chartBean.pieModel}" legendPosition="e" 
+							fill="false" showDataLabels="true"
+							title="Usuários" style="width:450px;height:350px" sliceMargin="5"
+							diameter="150"/>
+					
+					</h:panelGrid>
+					<h:panelGrid columns="4">
+						<h:form id="impressao">
+<!-- 							<h:commandLink> -->
+<!-- 								<p:fileDownload value="#{report.arquivoRetorno}" /> -->
+<!-- 								<h:graphicImage library="images" name="pdf.png" -->
+<!-- 									title="Imprimir PDF" /> -->
+<!-- 							</h:commandLink> -->
+						</h:form>
+						<h:messages />
+					</h:panelGrid>
+					<br /> <a style="padding-right: 3px;"
+						href="#{request.contextPath}/j_spring_security_logout">sair</a> <br />
+
+				</div>
+			</div>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>
