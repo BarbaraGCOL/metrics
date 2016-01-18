@@ -14,7 +14,6 @@ import org.primefaces.event.RowEditEvent;
 
 import br.com.metrics.dao.ProjectDao;
 import br.com.metrics.dao.ProjectDaoImpl;
-import br.com.metrics.dao.utils.DAOFactory;
 import br.com.metrics.model.Project;
  
 @ManagedBean(name="projectController")
@@ -30,20 +29,18 @@ public class ProjectController implements Serializable {
     @PostConstruct
     public void init() {
     	projectDao = new ProjectDaoImpl();
-    	setProjectDao(DAOFactory.createProject());
     }    
      
     private void setProjectDao(ProjectDao projectDao) {
     	this.projectDao = projectDao;
-    	projects = projectDao.list();
     }
  
     public List<Project> getProjects() {
+    	projects = projectDao.list();
         return projects;
     }
      
     public void onRowEdit(RowEditEvent event) {
-    	setProjectDao(DAOFactory.createProject());
         FacesMessage msg = new FacesMessage("Project Edited", ((Project) event.getObject()).getName());
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
@@ -54,7 +51,6 @@ public class ProjectController implements Serializable {
     }
      
     public void onCellEdit(CellEditEvent event) {
-    	setProjectDao(DAOFactory.createProject());
         Object oldValue = event.getOldValue();
         Object newValue = event.getNewValue();
          

@@ -73,6 +73,10 @@ public class MetricAvailable implements Serializable{
 		this.monitorings = monitorings;
 		this.metrics = metrics;
 	}
+	
+	public MetricAvailable(){
+		
+	}
 
 	public int getId() {
 		return id;
