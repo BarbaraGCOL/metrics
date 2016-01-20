@@ -1,7 +1,7 @@
 package br.com.metrics.business;
  
 import br.com.metrics.dao.UserDao;
-import br.com.metrics.dao.utils.DAOFactory;
+import br.com.metrics.dao.util.DAOFactory;
  
 public class UserBusiness {
  

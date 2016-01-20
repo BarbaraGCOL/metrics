@@ -18,7 +18,8 @@
 			<h:form id="form">
 	   			<p:growl id="msgs" showDetail="true"/>
 					<p:dataTable id="projects" var="project" value="#{projectController.projects}"
-						editable="true" style="margin-bottom:20px">
+						editable="true" style="margin-bottom:20px"
+						 styleClass="table table-striped table-bordered">
 						<f:facet name="header">
 				           Projetos
 				       </f:facet>
@@ -29,14 +30,7 @@
 							update=":form:msgs" />
 		
 						<p:column headerText="Id">
-							<p:cellEditor>
-								<f:facet name="output">
-									<h:outputText value="#{project.id}" />
-								</f:facet>
-								<f:facet name="input">
-									<p:inputText id="modelInput" value="#{project.id}" style="width:100%" />
-								</f:facet>
-							</p:cellEditor>
+							<h:outputText value="#{project.id}" />
 						</p:column>
 						
 						<p:column headerText="Nome">

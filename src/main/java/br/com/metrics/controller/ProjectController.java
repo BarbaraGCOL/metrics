@@ -13,7 +13,7 @@ import org.primefaces.event.CellEditEvent;
 import org.primefaces.event.RowEditEvent;
 
 import br.com.metrics.dao.ProjectDao;
-import br.com.metrics.dao.ProjectDaoImpl;
+import br.com.metrics.dao.impl.ProjectDaoImpl;
 import br.com.metrics.model.Project;
  
 @ManagedBean(name="projectController")

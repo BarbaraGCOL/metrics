@@ -1,7 +1,7 @@
 package br.com.metrics.business;
  
 import br.com.metrics.dao.ProfileDao;
-import br.com.metrics.dao.utils.DAOFactory;
+import br.com.metrics.dao.util.DAOFactory;
 import br.com.metrics.model.Profile;
 
 import java.util.Properties;
